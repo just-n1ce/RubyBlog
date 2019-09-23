@@ -1,0 +1,25 @@
+<div class="container mt-5">
+
+
+  <h3>Edit</h3>
+  <%= form_with(model: @post, local: true) do |post| %>
+    <p>
+      Name<br>
+      <%= post.text_field :name %>
+    </p>
+    <p>
+      Content<br>
+      <%= post.text_area :content %>
+    </p>
+    <p>
+      <%= post.file_field :file %>
+    </p>
+    <p class="mt-3 mb-3">
+      Category: <%= post.select :category_id, @all_category.map{|i| [i.name, i.id]} %> <br>
+    </p>
+    <p>
+      <%= post.submit(class: 'btn btn-success post_link') %>
+      <%= link_to 'Back', posts_path, class: 'btn btn-primary post_link' %>
+    </p>
+  <% end %>
+</div>

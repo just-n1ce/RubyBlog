@@ -1,0 +1,67 @@
+<div class="container">
+  <h1>Categories list</h1>
+  <% @categories.each do |category| %>
+
+    <%= link_to category.name, category_path(category.id), class: "home_link pr-3" %>
+
+
+  <% end %>
+  <h2 class="mt-5">Post show</h2>
+  <p><%= 'Title - ' %> <%= @post.name %></p>
+  <p class="mb-5"><%= 'Text - ' %> <%= @post.content %></p>
+  <% if @post.file.present? %>
+    <a href="<%=@post.file.url %>">
+      <%= @post.file.url%>
+    </a>
+  <% end %>
+
+  <div class="text-center">
+    <h2><%= 'Comments' %></h2>
+  </div>
+
+
+<div class="remote">
+  <% @post.comments.each do |post| %>
+    <div class="mt-5">
+      <p><%= 'Username - ' %> <%= post.author %></p>
+      <p><%= 'Text - ' %> <%= post.content %></p>
+      <p><%= post.created_at.strftime("%Y.%m.%d") %>
+        <%= post.created_at.strftime("%H:%M:%S")%>
+      </p>
+
+
+      <%= link_to 'Delete',comment_path(post), method: :destroy, class: 'btn btn-danger post_link' %>
+
+    </div>
+
+
+
+  <% end %>
+</div>
+
+
+<div class="text-center mt-5">
+  <%= form_for @comment, :remote => true, url:comments_create_path do |form| %>
+      <p>
+        <%= form.label :author%><br>
+        <%= form.text_area :author, :required => '', :placeholder => "Example: Alex Morgan" %>
+      </p>
+
+      <p>
+        <%= form.label :content %><br>
+        <%= form.text_area :content, :required => '' %>
+      </p>
+
+
+      <p>
+        <%= form.submit %>
+      </p>
+
+  <% end %>
+</div>
+
+<p class="text-center mt-5">
+  <%= link_to 'Posts', posts_path, class: "home_link" %>
+</p>
+
+</div>

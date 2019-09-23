@@ -1,0 +1,23 @@
+<div class="container mt-5">
+  <h1>Categories#new</h1>
+  <p>Find me in app/views/categories/new.html.erb</p>
+
+  <%= form_for @category, url:categories_path do |form| %>
+    <p>
+      <%= form.label :name %><br>
+      <%= form.text_field :name %>
+    </p>
+
+    <p>
+      <%= form.label :description %><br>
+      <%= form.text_field :description %>
+    </p>
+
+    <p class="mt-5">
+      <%= form.submit %>
+    </p>
+  <% end %>
+  <div class="mt-5">
+    <%= link_to 'Back to categories', categories_path, class: "home_link" %>
+  </div>
+</div>

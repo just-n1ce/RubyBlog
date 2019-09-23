@@ -1,0 +1,20 @@
+<div class="container mt-5">
+<h1>Categories#edit</h1>
+<p>Find me in app/views/categories/edit.html.erb</p>
+
+<h3>Редагувати Категорію</h3>
+<%= form_with(model: @category, local: true) do |category| %>
+  <p>
+    Назва катігорії<br>
+    <%= category.text_field :name %>
+  </p>
+  <p>
+    Опис категорії<br>
+    <%= category.text_area :description %>
+  </p>
+  <p>
+    <%= category.submit(class: 'btn btn-success') %>
+    <%= link_to 'Назад', posts_path, class: 'btn btn-primary' %>
+  </p>
+<% end %>
+</div>

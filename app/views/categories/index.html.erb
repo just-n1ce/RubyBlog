@@ -1,0 +1,21 @@
+<div class="container text-center mt-5">
+
+  <div class="mt-5">
+    <h2><%= 'Categories' %></h2>
+  </div>
+  <div class="text-center mt-2">
+    <% @categories.each do |category| %>
+
+      <h4><%= link_to category.name, category_path(category.id), class: "home_link" %></h4>
+
+      <%= link_to 'Edit', edit_category_path(category.id), class: 'btn btn-warning edit_link mb-2' %><br>
+      <%= link_to 'Delete', category_path(category), class: 'btn btn-danger mb-5 delete_link',method: :destroy %>
+    <% end %>
+
+    <div class="mt-5">
+      <%= link_to 'Create new categories', new_category_path, class: "home_link" %> <br>
+
+      <%= link_to 'Homes', root_url, class: "home_link" %>
+    </div>
+  </div>
+</div>

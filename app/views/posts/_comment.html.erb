@@ -1,0 +1,14 @@
+<%if @comment.present? %>
+<div class="mt-5">
+  <p><%= 'Username - ' %> <%= comment.author %></p>
+  <p><%= 'Text - ' %> <%= comment.content %></p>
+  <p><%= comment.created_at.strftime("%Y.%m.%d") %>
+    <%= comment.created_at.strftime("%H:%M:%S")%>
+  </p>
+
+
+  <%= link_to 'Delete',comment_path(comment), method: :destroy, class: 'btn btn-danger post_link' %>
+
+</div>
+<%end %>
+

@@ -1,0 +1,12 @@
+console.log("<%= @comment_right %>")
+if ('<%= @comment_right %>' == "true"){
+    var str = "";
+    str += "<%= j render :partial => 'posts/comment', :locals => {comment: @comment } %>"
+    $('.remote').append(str)
+    str = "";
+}
+
+else {
+    alert("Author's field is not valid. Please, enter the 2 words with first letter upcase without numbers!")
+}
+
