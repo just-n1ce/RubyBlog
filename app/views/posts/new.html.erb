@@ -1,30 +1,30 @@
-<div class="container mt-5">
-<h1>Posts#new</h1>
-<%#=@all_category.to_json %>
-<%= form_for @post, url:posts_path do |form| %>
-  <p>
-    <%= form.label :name %><br>
-    <%= form.text_field :name %>
-  </p>
-
-  <p>
-    <%= form.label :content %><br>
-    <%= form.text_area :content %>
-  </p>
-
+<div class="mt-5">
+  <h1>Posts#new</h1>
+  <%#=@all_category.to_json %>
+  <%= form_for @post, url:posts_path do |form| %>
     <p>
-      <%= form.label :file %>
-      <%= form.file_field :file %>
+      <%= form.label :name %><br>
+      <%= form.text_field :name %>
     </p>
 
-  <p>
-    Category: <%= form.select :category_id, @all_category.map{|i| [i.name, i.id]} %> <br>
-  </p>
+    <p>
+      <%= form.label :content %><br>
+      <%= form.text_area :content %>
+    </p>
 
-  <p class="mt-5 mb-5">
-    <%= form.submit %>
-  </p>
-<% end %>
+      <p>
+        <%= form.label :file %>
+        <%= form.file_field :file %>
+      </p>
 
-<%= link_to 'Posts', posts_path, class: "home_link" %>
+    <p>
+      Category: <%= form.select :category_id, @all_category.map{|i| [i.name, i.id]} %> <br>
+    </p>
+
+    <p class="mt-5 mb-5">
+      <%= form.submit %>
+    </p>
+  <% end %>
+
+  <%= link_to 'Posts', posts_path, class: "home_link" %>
 </div>

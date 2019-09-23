@@ -10,11 +10,14 @@
   </head>
 
   <body>
-  <div class="container">
-  <%= render 'layouts/header' %>
-    <%= yield %>
-  <%= render 'layouts/footer' %>
-  </div>
+    <div class="container">
+      <%= render 'layouts/header' %>
+        <div class="fixed">
+          <%= yield %>
+        </div>
+      <%= render 'layouts/footer' %>
+
+    </div>
   </body>
   <!-- Google Analytics -->
 <!--  <script>-->

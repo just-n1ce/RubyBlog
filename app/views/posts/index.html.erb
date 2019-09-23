@@ -1,31 +1,29 @@
-<div class="container">
-  <h1>Categories list</h1>
-  <% @categories.each do |category| %>
+<h1>Categories list</h1>
+<% @categories.each do |category| %>
 
-    <%= link_to category.name, category_path(category.id), class: "home_link pr-3" %>
+  <%= link_to category.name, category_path(category.id), class: "home_link pr-3" %>
 
-  <% end %>
-  <div class="text-center">
-    <h2><%= 'Posts' %></h2>
-  </div>
-  <% @posts.each do |x| %>
-    <div class="border">
-      <p><%=  %></p>
-      <p> <%=  x.name %></p>
-      <p> <%= x.content %></p>
-      <br>
-      <div class="row">
-        <div class="col-md-12">
-        <%= link_to 'View', post_path(x.id), class: "btn btn-success post_link"  %>
-        <%= link_to 'Edit', edit_post_path(x.id), class: 'btn btn-warning post_link' %>
-        <%= link_to 'Delete', post_path(x.id), class: 'btn btn-danger post_link',method: :destroy %>
-          </div>
-      </div>
-    </div>
+<% end %>
+<div class="text-center">
+  <h2><%= 'Posts' %></h2>
+</div>
+<% @posts.each do |x| %>
+  <div class="border">
+    <p><%=  %></p>
+    <p> <%=  x.name %></p>
+    <p> <%= x.content %></p>
     <br>
-  <% end %>
-  <div class="text-center mt-5 mb-5">
-    <%= link_to 'Create new post', new_post_path, class: "home_link" %> <br>
-    <%= link_to 'Homes', root_url, class: "home_link" %>
+    <div class="row">
+      <div class="col-md-12">
+      <%= link_to 'View', post_path(x.id), class: "btn btn-success post_link"  %>
+      <%= link_to 'Edit', edit_post_path(x.id), class: 'btn btn-warning post_link' %>
+      <%= link_to 'Delete', post_path(x.id), class: 'btn btn-danger post_link',method: :destroy %>
+        </div>
+    </div>
   </div>
+  <br>
+<% end %>
+<div class="text-center mt-5 mb-5">
+  <%= link_to 'Create new post', new_post_path, class: "home_link" %> <br>
+  <%= link_to 'Homes', root_url, class: "home_link" %>
 </div>

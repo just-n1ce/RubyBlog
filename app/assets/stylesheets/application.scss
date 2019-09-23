@@ -22,6 +22,16 @@
  *= require font-awesome
  */
 
+.fixed {
+  //height: calc(100vh - 160px);
+}
+
+footer {
+  position: relative;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
 
 a.home_link {
   font-size: 20px;

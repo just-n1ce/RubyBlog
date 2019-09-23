@@ -1,23 +1,22 @@
-<div class="container">
-  <h1>Categories list</h1>
-  <% @categories.each do |category| %>
+<h1>Categories list</h1>
+<% @categories.each do |category| %>
 
-    <%= link_to category.name, category_path(category.id), class: "home_link pr-3" %>
+  <%= link_to category.name, category_path(category.id), class: "home_link pr-3" %>
 
 
-  <% end %>
-  <h2 class="mt-5">Post show</h2>
-  <p><%= 'Title - ' %> <%= @post.name %></p>
-  <p class="mb-5"><%= 'Text - ' %> <%= @post.content %></p>
-  <% if @post.file.present? %>
-    <a href="<%=@post.file.url %>">
-      <%= @post.file.url%>
-    </a>
-  <% end %>
+<% end %>
+<h2 class="mt-5">Post show</h2>
+<p><%= 'Title - ' %> <%= @post.name %></p>
+<p class="mb-5"><%= 'Text - ' %> <%= @post.content %></p>
+<% if @post.file.present? %>
+  <a href="<%=@post.file.url %>">
+    <%= @post.file.url%>
+  </a>
+<% end %>
 
-  <div class="text-center">
-    <h2><%= 'Comments' %></h2>
-  </div>
+<div class="text-center">
+  <h2><%= 'Comments' %></h2>
+</div>
 
 
 <div class="remote">
@@ -63,5 +62,3 @@
 <p class="text-center mt-5">
   <%= link_to 'Posts', posts_path, class: "home_link" %>
 </p>
-
-</div>
