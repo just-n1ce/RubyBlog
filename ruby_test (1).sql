@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Sep 23, 2019 at 04:29 PM
+-- Generation Time: Sep 23, 2019 at 04:39 PM
 -- Server version: 5.7.27-0ubuntu0.16.04.1
 -- PHP Version: 7.0.33-0ubuntu0.16.04.6
 
@@ -111,6 +111,15 @@ CREATE TABLE `categories` (
   `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `categories`
+--
+
+INSERT INTO `categories` (`id`, `name`, `description`, `created_at`, `updated_at`) VALUES
+(1, 'Movies', 'Top 10 movies of all time', '2019-09-23 13:31:47', '2019-09-23 13:31:47'),
+(2, 'Sport', 'All sport events from all over the world', '2019-09-23 13:36:35', '2019-09-23 13:36:35'),
+(3, 'Food', 'Some information for food', '2019-09-23 13:37:27', '2019-09-23 13:37:34');
+
 -- --------------------------------------------------------
 
 --
@@ -127,6 +136,15 @@ CREATE TABLE `comments` (
   `category_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `comments`
+--
+
+INSERT INTO `comments` (`id`, `author`, `content`, `created_at`, `updated_at`, `post_id`, `category_id`) VALUES
+(1, 'James Moriarty', 'Al Pacino!! ', '2019-09-23 13:35:43', '2019-09-23 13:35:43', 1, NULL),
+(2, 'Jamie Vardy', 'Damn true', '2019-09-23 13:37:14', '2019-09-23 13:37:14', 2, NULL),
+(3, 'Bill Richmond', 'I dont like meat, i prefer fish!', '2019-09-23 13:39:20', '2019-09-23 13:39:20', 3, NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -142,6 +160,15 @@ CREATE TABLE `posts` (
   `category_id` int(11) DEFAULT NULL,
   `file` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `posts`
+--
+
+INSERT INTO `posts` (`id`, `name`, `content`, `created_at`, `updated_at`, `category_id`, `file`) VALUES
+(1, '9 things you never knew about the \'Godfather\' movies from the stars and director', 'On Saturday night, cast and crew from "The Godfather" and "The Godfather Part II" got together for a screening for the two films and a panel for the closing night of the Tribeca Film Festival — a festival that was started by "Godfather: Part II" star Robert De Niro.\r\nDe Niro, Diane Keaton, Al Pacino, James Caan, Robert Duvall, Talia Shire, and director Francis Ford Coppola were all on the panel honoring the 45th anniversary of "The Godfather" this year. Director Taylor Hackford led the conversation.', '2019-09-23 13:32:54', '2019-09-23 13:32:54', 1, 'movie.png'),
+(2, 'Man City are best team in the world - Goal.com', 'The Reds may be European champions but Klopp has dismissed claims they are the top team on the continent\r\nJurgen Klopp says Liverpool are not the best team in Europe despite their Champions League success last season, as he believes rivals Manchester City are the best team on the planet.\r\n\r\nKlopp’s side became European champions for a sixth time courtesy of a 2-0 victory over Tottenham in June, 12 months on from their agonising defeat to Real Madrid in the 2018 final. Manchester City in contrast have not gone beyond the quarter-finals for the past four seasons.\r\n\r\nThe situation is different domestically, with Pep Guardiola’s side winning back-to-back Premier League titles including a domestic treble last time out.', '2019-09-23 13:36:53', '2019-09-23 13:36:53', 2, 'mc.jpg'),
+(3, 'The Advantages Of Grass Fed Meat', 'Sometimes you don\'t know what you\'ve got until it\'s gone. Usually, an opening line like this would be the cue to start waxing lyrical about lost loves, but as you know that\'s not really my style. I am actually referring to high quality, grass fed beef and other organic, non-grain fed meat such as venison, buffalo, and even rabbit. And why am I whining about it being organic? Because at the start of this month I moved my family to beautiful Marbella, where the sun always shines, the air is clean, the fruit is fresh, and the meat just plain sucks.\r\n\r\nWe have gone from eating reasonably priced grass-fed beef fillet steaks, buffalo mince and beef steak burgers to crazily expensive imported steaks that taste watery and somehow a little bit chemical. What has obviously happened is that after several years of eating non-grain fed meat my palette has adapted/improved and I really struggle to stomach mass-produced meat now. The taste isn\'t really the thing, however, it is the health benefits both for myself and of course my two young children both of whom have been weaned on grass fed meats and have thrived on it and who know the balance of nature versus nurture, but both my children (aged 5 and 2) are off the percentage charts for their heights. I hope that this will give them an advantage in later life, although it is sometimes a little bit disconcerting when my 2 year old daughter is assumed to be a slightly backward 4 year old! ', '2019-09-23 13:38:45', '2019-09-23 13:38:45', 3, 'food.jpg');
 
 -- --------------------------------------------------------
 
@@ -282,17 +309,17 @@ ALTER TABLE `brouse_users`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `users`
 --
