@@ -23,12 +23,12 @@
 
 
 
-// $("#new_comment").on("submit" , function(el){
-//     console.log("asd");
-//     el.preventDefault();
-//     var field_1 = document.getElementById("comment_author");
-//     var field_2 = document.getElementById("comment_content");
-//     field_1 = '';
-//     field_2 ='';
-//
-// });
+$(document).on("submit" , function(el){
+    // console.log("asd");
+    // el.preventDefault();
+    // var field_1 = document.getElementById("comment_author");
+    // var field_2 = document.getElementById("comment_content");
+    // field_1 = '';
+    // field_2 ='';
+
+});
