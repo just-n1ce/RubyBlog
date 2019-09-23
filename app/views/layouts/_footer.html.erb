@@ -1,0 +1,11 @@
+<div class="row mt-5">
+  <% @br_count.browse_names.each do |name| %>
+    <div class="col-md-2">
+    <p>
+      <%= name[0] %>
+
+      <%= @br_count.where(browse_name: name[1]).count %>
+    </p>
+    </div>
+  <% end %>
+</div>

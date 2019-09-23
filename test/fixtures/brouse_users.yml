@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  browse_name: MyString
+  count: 1
+
+two:
+  browse_name: MyString
+  count: 1
