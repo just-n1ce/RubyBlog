@@ -1,15 +1,22 @@
-<div class="mt-5 text-center">
-  <h1>Test task</h1>
-  <p>Using Ruby on rails :)</p>
-  <div class="row">
-    <div class="col-md-6">
-      <div class="mt-5">
-        <%= link_to "Categories", categories_path, class: "home_link" %>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div class="mt-5">
-        <%= link_to "Posts", posts_path, class: "home_link" %>
+<div class="vh-100 primary-color d-flex align-items-center justify-content-center">
+  <div class="jumbotron jumbotron-fluid bg-transparent">
+    <div class="container secondary-color">
+      <h1 class="display-4">Simple Blog RoR</h1>
+      <p class="lead">
+        Created by A.D, using Ruby on Rails
+      </p>
+      <hr class="my-4" />
+      <div class="row">
+        <div class="col-md-6">
+          <div class="mt-2">
+            <%= link_to "Show Posts", posts_path, class: "btn btn-lg custom-button" %>
+          </div>
+        </div>
+        <div class="col-md-6 text-right">
+          <div class="mt-2">
+            <%= link_to "Show Categories", categories_path, class: "btn btn-lg custom-button" %>
+          </div>
+        </div>
       </div>
     </div>
   </div>

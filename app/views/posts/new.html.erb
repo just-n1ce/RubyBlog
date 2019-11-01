@@ -1,30 +1,36 @@
-<div class="mt-5">
-  <h1>Posts#new</h1>
-  <%#=@all_category.to_json %>
-  <%= form_for @post, url:posts_path do |form| %>
-    <p>
-      <%= form.label :name %><br>
-      <%= form.text_field :name %>
-    </p>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-sm-12 col-lg-6 offset-lg-3">
+      <h1 class="font-weight-normal mb-4">
+        Add a new post to our awesome post collection
+      </h1>
+      <%= form_for @post, url:posts_path do |form| %>
+        <p>
+          <%= form.label :name %><br>
+          <%= form.text_field :name, required: true, class: "w-100" %>
+        </p>
 
-    <p>
-      <%= form.label :content %><br>
-      <%= form.text_area :content %>
-    </p>
+        <p>
+          <%= form.label :content %><br>
+          <%= form.text_area :content, required: true, class: "w-100" %>
+        </p>
 
-      <p>
-        <%= form.label :file %>
-        <%= form.file_field :file %>
+        <p>
+          <%= form.label :file, 'Image:' %>
+          <%= form.file_field :file, required: true %>
+        </p>
+
+        <p>
+          Category: <%= form.select :category_id, @all_category.map{|i| [i.name, i.id]} %>
+        </p>
+
+        <p class="mt-5 mb-5 text-center">
+          <%= form.submit 'Create Post', class: 'btn btn-outline-dark'%>
+        </p>
+      <% end %>
+      <p class="mt-5 mb-5 text-center">
+        <%= link_to 'Posts', posts_path, class: "link" %>
       </p>
-
-    <p>
-      Category: <%= form.select :category_id, @all_category.map{|i| [i.name, i.id]} %> <br>
-    </p>
-
-    <p class="mt-5 mb-5">
-      <%= form.submit %>
-    </p>
-  <% end %>
-
-  <%= link_to 'Posts', posts_path, class: "home_link" %>
+    </div>
+  </div>
 </div>

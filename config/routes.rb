@@ -1,15 +1,15 @@
 Rails.application.routes.draw do
 
-
   devise_for :users
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   # devise_for :users, :controllers => { registrations: 'registrations'}
 
-
+  resources :shape_generator
   resources :categories
   resources :posts
   resources :comments
+  get 'shape_generator/index', to: 'shape#index'
   root 'homes#index'
   # get 'categories/index' => 'categories#index', as: 'categories'
   # get 'categories/show/:id'=> 'categories#show', as: 'show_category'

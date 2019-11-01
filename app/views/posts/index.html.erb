@@ -1,29 +1,55 @@
-<h1>Categories list</h1>
-<% @categories.each do |category| %>
-
-  <%= link_to category.name, category_path(category.id), class: "home_link pr-3" %>
-
-<% end %>
-<div class="text-center">
-  <h2><%= 'Posts' %></h2>
-</div>
-<% @posts.each do |x| %>
-  <div class="border">
-    <p><%=  %></p>
-    <p> <%=  x.name %></p>
-    <p> <%= x.content %></p>
-    <br>
-    <div class="row">
-      <div class="col-md-12">
-      <%= link_to 'View', post_path(x.id), class: "btn btn-success post_link"  %>
-      <%= link_to 'Edit', edit_post_path(x.id), class: 'btn btn-warning post_link' %>
-      <%= link_to 'Delete', post_path(x.id), class: 'btn btn-danger post_link',method: :destroy %>
-        </div>
-    </div>
+<div class="hero position-relative d-flex align-items-center justify-content-center">
+  <div class="overlay bg-dark position-absolute" >
+    <p class="display-4 position-relative text-white text-center pt-5">
+      Posts on every occasion
+    </p>
+    <p class="display-6 position-relative text-white text-center">
+      You can see all our awesome collection of posts on different topics
+    </p>
   </div>
-  <br>
-<% end %>
-<div class="text-center mt-5 mb-5">
-  <%= link_to 'Create new post', new_post_path, class: "home_link" %> <br>
-  <%= link_to 'Homes', root_url, class: "home_link" %>
+</div>
+<div class="container mt-5">
+  <div class="text-center">
+    <h2>Categories list</h2>
+    <% @categories.each do |category| %>
+      <%= link_to category.name, category_path(category.id), class: "link ml-2 mr-2" %>
+    <% end %>
+  </div>
+  <% @posts.each do |post| %>
+    <div class="col-12 mt-5 border p-4">
+      <div class="row">
+        <div class="col-7">
+          <h3>
+            <%= post.name %>
+          </h3>
+          <p>
+            <%= post.content.truncate(150, separator: ' ') %>
+          </p>
+          <%= link_to 'View', post_path(post.id), class: "btn btn-outline-success link"  %>
+          <%= link_to 'Edit', edit_post_path(post.id), class: 'btn btn-outline-info link' %>
+          <%= link_to 'Delete', post_path(post.id), class: 'btn btn-outline-danger link', method: :delete %>
+        </div>
+        <div class="col-5">
+          <p>
+            <%= image_tag(post.file.url, width: '400', height: '250') %>
+          </p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <% unless @posts.present? %>
+    <div class="text-center pb-5">
+      <h4>
+        No posts yet. Why not <%= link_to 'create one', new_post_path %>
+      </h4>
+    </div>
+  <% end %>
+  <div class="text-center mt-5 mb-5">
+    <p class="mb-5">
+      <%= link_to 'Create new post', new_post_path, class: "btn custom-button link" %>
+    </p>
+    <p>
+      <%= link_to 'Homes', root_path, class: "btn custom-button link" %>
+    </p>
+  </div>
 </div>

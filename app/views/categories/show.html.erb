@@ -1,16 +1,47 @@
-<div class="text-center mt-5">
-
-  <h2>
-    <%= @category.name %>
-  </h2>
-  <h4>
-  <%= @category.description %>
-  </h4>
-  <h2 class="mt-5">Post list</h2>
-  <% @category.posts.each do |post| %>
-    <p>
-      <%= link_to post.name, post_path(post.id), class: "home_link" %>
+<div class="hero position-relative d-flex align-items-center justify-content-center">
+  <div class="overlay bg-dark position-absolute" >
+    <p class="display-4 position-relative text-white text-center pt-5">
+      <%= @category.name %>
     </p>
+    <p class="display-6 position-relative text-white text-center">
+      <%= @category.description %>
+    </p>
+  </div>
+</div>
+<div class="container">
+  <h2 class="text-center mt-5 mb-5">
+    Posts list
+  </h2>
+  <% @category.posts.each do |post| %>
+    <div class="col-12 mt-5 border p-4">
+      <div class="row">
+        <div class="col-7">
+          <h3>
+            <%= post.name %>
+          </h3>
+          <p>
+            <%= post.content.truncate(150, separator: ' ') %>
+          </p>
+          <%= link_to 'View', post_path(post.id), class: "btn btn-outline-success link"  %>
+          <%= link_to 'Edit', edit_post_path(post.id), class: 'btn btn-outline-info link' %>
+          <%= link_to 'Delete', post_path(post.id), class: 'btn btn-outline-danger link', method: :delete %>
+        </div>
+        <div class="col-5">
+          <p>
+            <%= image_tag(post.file.url, width: '400', height: '250') %>
+          </p>
+        </div>
+      </div>
+    </div>
   <% end %>
-
+  <% unless @category.posts.present? %>
+    <div class="text-center pb-5">
+      <h4>
+        No posts yet. Why not <%= link_to 'create one', new_post_path %>
+      </h4>
+    </div>
+  <% end %>
+  <div class="text-center mt-5">
+    <%= link_to 'Categories', categories_path, class: "link" %>
+  </div>
 </div>

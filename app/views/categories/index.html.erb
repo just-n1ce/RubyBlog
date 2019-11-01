@@ -1,21 +1,35 @@
-<div class="text-center mt-5">
-
-  <div class="mt-5">
-    <h2><%= 'Categories' %></h2>
+<div class="hero position-relative d-flex align-items-center justify-content-center">
+  <div class="overlay bg-dark position-absolute" >
+    <p class="display-4 position-relative text-white text-center pt-5">
+      All post categories
+    </p>
+    <p class="display-6 position-relative text-white text-center">
+      All posts belongs to some category, you can see that list right here
+    </p>
   </div>
-  <div class="text-center mt-2">
+</div>
+<div class="container">
+  <h2 class="text-center mt-5 mb-5">Categories</h2>
+  <div class="row">
     <% @categories.each do |category| %>
-
-      <h4><%= link_to category.name, category_path(category.id), class: "home_link" %></h4>
-
-      <%= link_to 'Edit', edit_category_path(category.id), class: 'btn btn-warning edit_link mb-2' %><br>
-      <%= link_to 'Delete', category_path(category), class: 'btn btn-danger mb-5 delete_link',method: :destroy %>
+        <div class="col-4">
+          <div class="card mb-4">
+            <div class="card-body">
+              <h3>
+                <%= link_to category.name, category_path(category.id), class: "link" %>
+              </h3>
+              <div class="text-right">
+                <%= link_to 'Edit', edit_category_path(category.id), class: 'btn btn-outline-info link mb-2' %><br>
+                <%= link_to 'Delete', category_path(category), class: 'btn btn-outline-danger link', method: :delete %>
+              </div>
+            </div>
+          </div>
+        </div>
     <% end %>
-
-    <div class="mt-5">
-      <%= link_to 'Create new categories', new_category_path, class: "home_link" %> <br>
-
-      <%= link_to 'Homes', root_url, class: "home_link" %>
-    </div>
   </div>
+  <div class="mt-5 text-center">
+    <%= link_to 'Create new categories', new_category_path, class: "btn custom-button link mb-5" %> <br>
+    <%= link_to 'Homes', root_url, class: "btn custom-button link" %>
+  </div>
+
 </div>

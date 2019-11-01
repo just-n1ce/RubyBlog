@@ -1,64 +1,86 @@
-<h1>Categories list</h1>
-<% @categories.each do |category| %>
-
-  <%= link_to category.name, category_path(category.id), class: "home_link pr-3" %>
-
-
-<% end %>
-<h2 class="mt-5">Post show</h2>
-<p><%= 'Title - ' %> <%= @post.name %></p>
-<p class="mb-5"><%= 'Text - ' %> <%= @post.content %></p>
-<% if @post.file.present? %>
-  <a href="<%=@post.file.url %>">
-    <%= @post.file.url%>
-  </a>
-<% end %>
-
-<div class="text-center">
-  <h2><%= 'Comments' %></h2>
+<div class="hero position-relative d-flex align-items-center justify-content-center">
+  <div class="overlay bg-dark position-absolute" >
+    <p class="display-4 position-relative text-white text-center pt-5">
+      Posts on every occasion
+    </p>
+    <p class="display-6 position-relative text-white text-center">
+      You can see all our awesome collection of posts on different topics
+    </p>
+  </div>
 </div>
-
-
-<div class="remote">
-  <% @post.comments.each do |post| %>
-    <div class="mt-5">
-      <p><%= 'Username - ' %> <%= post.author %></p>
-      <p><%= 'Text - ' %> <%= post.content %></p>
-      <p><%= post.created_at.strftime("%Y.%m.%d") %>
-        <%= post.created_at.strftime("%H:%M:%S")%>
-      </p>
-
-
-      <%= link_to 'Delete',comment_path(post), method: :destroy, class: 'btn btn-danger post_link' %>
-
+<div class="container mt-5">
+  <h2>Categories list</h2>
+  <% @categories.each do |category| %>
+    <%= link_to category.name, category_path(category.id), class: "link pr-3" %>
+  <% end %>
+  <div class="col-12 mt-5 border p-4">
+    <div class="row">
+      <div class="col-7">
+        <h3>
+          <%= @post.name %>
+        </h3>
+        <p>
+          <%= @post.content %>
+        </p>
+        <%= link_to 'Edit', edit_post_path(@post.id), class: 'btn btn-outline-info link' %>
+        <%= link_to 'Delete', post_path(@post.id), class: 'btn btn-outline-danger link', method: :delete %>
+      </div>
+      <div class="col-5">
+        <p>
+          <%= image_tag(@post.file.url, width: '400', height: '250') %>
+        </p>
+      </div>
     </div>
-
-
-
-  <% end %>
+    <h2 class="text-center mt-5">Comments</h2>
+    <div class="remote">
+      <% @post.comments.each do |post| %>
+        <div class="border p-3">
+          <div class="row">
+            <div class="col-1">
+              <p>
+                <%= image_tag(post.avatar.url, size: '70', class: "avatar") %>
+              </p>
+            </div>
+            <div class="col-9">
+              <h5 class="pt-2">
+                <%= post.author %>
+              </h5>
+              <h6>
+                <%= post.content %>
+              </h6>
+              <p>
+                <%= post.created_at.strftime("%Y.%m.%d") %>
+                <%= post.created_at.strftime("%H:%M:%S")%>
+              </p>
+            </div>
+            <div class="col-2 text-right">
+              <%= link_to 'Delete',comment_path(post), method: :delete, class: 'btn btn-danger link' %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="text-center mt-5">
+      <%= form_for @comment, remote: true, url: comments_create_path do |form| %>
+          <p>
+            <%= form.label :author%><br>
+            <%= form.text_field :author, required: true, placeholder: "Example: Alex Morgan", class: "w-50 text_field" %>
+          </p>
+          <p>
+            <%= form.label :content %><br>
+            <%= form.text_area :content, required: true, class: "w-50 text_area" %>
+          </p>
+          <p>
+            <%= form.label :avatar %><br>
+            <%= form.file_field :avatar, required: true, class: "w-50" %>
+          </p>
+          <p>
+            <%= form.submit 'Add Comment', class: "btn custom-button" %>
+          </p>
+      <% end %>
+    </div>
+    <div class="text-center mt-5">
+      <%= link_to 'Posts', posts_path, class: "link" %>
+    </div>
+  </div>
 </div>
-
-
-<div class="text-center mt-5">
-  <%= form_for @comment, :remote => true, url:comments_create_path do |form| %>
-      <p>
-        <%= form.label :author%><br>
-        <%= form.text_area :author, :required => '', :placeholder => "Example: Alex Morgan" %>
-      </p>
-
-      <p>
-        <%= form.label :content %><br>
-        <%= form.text_area :content, :required => '' %>
-      </p>
-
-
-      <p>
-        <%= form.submit %>
-      </p>
-
-  <% end %>
-</div>
-
-<p class="text-center mt-5">
-  <%= link_to 'Posts', posts_path, class: "home_link" %>
-</p>

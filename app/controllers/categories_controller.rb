@@ -9,7 +9,7 @@ class CategoriesController < ApplicationController
 
   def show
     @comment = Comment.new
-    @category = Category.find(params[:id])
+    category
   end
 
   def create
@@ -22,25 +22,28 @@ class CategoriesController < ApplicationController
   end
 
   def edit
-    @category = Category.find(params[:id])
+    category
   end
 
   def update
-    @category = Category.find(params[:id])
-    if @category.update(category_params)
-      redirect_to @category
+    if category.update(category_params)
+      redirect_to category
     else
       render 'edit'
     end
   end
 
   def destroy
-    @category = Category.find(params[:id])
-    @category.destroy
+    category.destroy
     redirect_to categories_path
   end
 
   private
+
+  def category
+    @category = Category.find(params[:id])
+  end
+
   def category_params
     params.require(:category).permit(:name, :description)
   end

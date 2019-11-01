@@ -1,23 +1,28 @@
-<div class="mt-5">
-  <h1>Categories#new</h1>
-  <p>Find me in app/views/categories/new.html.erb</p>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-sm-12 col-lg-6 offset-lg-3">
+      <h1 class="font-weight-normal mb-4">
+        Add a new category to our awesome category collection
+      </h1>
+      <%= form_for @category, url:categories_path do |form| %>
+        <p>
+          <%= form.label :name %><br>
+          <%= form.text_field :name, required: true, class: "w-100" %>
+        </p>
 
-  <%= form_for @category, url:categories_path do |form| %>
-    <p>
-      <%= form.label :name %><br>
-      <%= form.text_field :name %>
-    </p>
+        <p>
+          <%= form.label :description %><br>
+          <%= form.text_area :description, required: true, class: "w-100" %>
+        </p>
 
-    <p>
-      <%= form.label :description %><br>
-      <%= form.text_field :description %>
-    </p>
-
-    <p class="mt-5">
-      <%= form.submit %>
-    </p>
-  <% end %>
-  <div class="mt-5">
-    <%= link_to 'Back to categories', categories_path, class: "home_link" %>
+        <p class="mt-5 mb-5 text-center">
+          <%= form.submit 'Create Category', class: 'btn btn-outline-dark'%>
+        </p>
+      <% end %>
+      <p class="mt-5 mb-5 text-center">
+        <%= link_to 'Categories', categories_path, class: "link" %>
+      </p>
+    </div>
   </div>
 </div>
+

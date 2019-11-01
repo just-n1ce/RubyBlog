@@ -22,8 +22,37 @@
  *= require font-awesome
  */
 
-.fixed {
-  //height: calc(100vh - 160px);
+.custom-button.btn {
+  text-decoration: none;
+  background-color: #293241;
+  color: #FFF;
+  border: none;
+}
+.custom-button.btn:hover {
+  background-color: #1a212e;
+}
+.hero {
+  height: 25vh;
+  img {
+    object-fit: cover;
+    object-position: top;
+    height: 100%;
+    width: 100%;
+  }
+  .overlay {
+    background: black;
+    height: 100%;
+    width: 100%;
+    opacity: 0.4;
+  }
+}
+
+textarea {
+  height: 280px;
+}
+
+div.fixed {
+  height: calc(100vh - 160px);
 }
 
 footer {
@@ -33,27 +62,25 @@ footer {
   right: 0;
 }
 
-a.home_link {
-  font-size: 20px;
+a.link {
   letter-spacing: 2px;
   text-decoration: none;
 }
 
-a.post_link {
-  color: #fff;
-  letter-spacing: 2px;
-  text-decoration: none;
+.avatar {
+  border-radius: 50%;
+  margin-right: 10px;
 }
 
-a.edit_link {
-  font-size: 12px;
-  letter-spacing: 2px;
-  text-decoration: none;
+.text_field {
+  height: 40px;
+  border: 1px solid grey;
+  border-radius: 5px;
+  padding: 5px;
 }
-
-a.delete_link {
-  color: #fff;
-  font-size: 12px;
-  letter-spacing: 2px;
-  text-decoration: none;
+.text_area {
+  height: 80px;
+  border: 1px solid grey;
+  border-radius: 5px;
+  padding: 5px;
 }

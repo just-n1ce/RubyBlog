@@ -1,32 +1,28 @@
 class CommentsController < ApplicationController
 
   def create
-    @post = Post.find_by_id(params[:id])
-    if @post.present?
-      @comment = @post.comments.new(comment_params.merge(post_id: @post.id))
-      # redirect_to @post
+    if post.present?
+      @comment = post.comments.new(comment_params.merge(post_id: post.id))
       @comment_right = @comment.save
-      unless @comment_right
-        @comment = nil
-      end
+    @comment = nil unless @comment_right
     end
-
   end
 
-  # @post = Post.find_by_id(params[:id])
-  # @comment = @post.comments.create(comment_params)
-  # redirect_to show_post_path(@post.id)
-  #
-
   def destroy
-    @post = Post.find_by_id(params[:id])
+    post
     @comment = Comment.find(params[:id])
     @comment.destroy
     redirect_to posts_path
   end
+
   private
+
+  def post
+    @post = Post.find_by_id(params[:id])
+  end
+
   def comment_params
-    params.require(:comment).permit(:author, :content)
+    params.require(:comment).permit(:author, :content, :avatar)
   end
 
 end

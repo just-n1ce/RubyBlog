@@ -1,20 +1,28 @@
-<div class="mt-5">
-<h1>Categories#edit</h1>
-<p>Find me in app/views/categories/edit.html.erb</p>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-sm-12 col-lg-6 offset-lg-3">
+      <h1 class="font-weight-normal mb-4">
+        Edit Category
+      </h1>
+      <%= form_with(model: @category, local: true) do |category| %>
+        <p>
+          <%= category.label :name %><br>
+          <%= category.text_field :name, required: true, class: "w-100" %>
+        </p>
 
-<h3>Редагувати Категорію</h3>
-<%= form_with(model: @category, local: true) do |category| %>
-  <p>
-    Назва катігорії<br>
-    <%= category.text_field :name %>
-  </p>
-  <p>
-    Опис категорії<br>
-    <%= category.text_area :description %>
-  </p>
-  <p>
-    <%= category.submit(class: 'btn btn-success') %>
-    <%= link_to 'Назад', posts_path, class: 'btn btn-primary' %>
-  </p>
-<% end %>
+        <p>
+          <%= category.label :description %><br>
+          <%= category.text_area :description, required: true, class: "w-100" %>
+        </p>
+
+        <p class="mt-5 mb-5 text-center">
+          <%= category.submit 'Update Category', class: 'btn btn-outline-dark'%>
+        </p>
+      <% end %>
+      <p class="mt-5 mb-5 text-center">
+        <%= link_to 'Categories', categories_path, class: "link" %>
+      </p>
+    </div>
+  </div>
 </div>
+
